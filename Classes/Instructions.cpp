@@ -43,7 +43,7 @@ bool Instructions::init()
     // TODO - research lambda
     listener1->onTouchBegan = [](Touch* touch, Event* event){
         auto scene = Game::createScene();
-        Director::getInstance()->pushScene(scene);
+        Director::getInstance()->replaceScene(scene);
         return false;
     };
     
