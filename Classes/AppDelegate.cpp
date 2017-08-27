@@ -1,6 +1,9 @@
 #include "AppDelegate.h"
 #include "Instructions.h"
 #include "Game.h"
+#include "audio/include/SimpleAudioEngine.h"
+
+using namespace CocosDenshion;
 
 USING_NS_CC;
 
@@ -15,6 +18,7 @@ AppDelegate::AppDelegate()
 
 AppDelegate::~AppDelegate() 
 {
+    SimpleAudioEngine::end();
 }
 
 // if you want a different context, modify the value of glContextAttrs
@@ -86,9 +90,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
 // This function will be called when the app is inactive. Note, when receiving a phone call it is invoked.
 void AppDelegate::applicationDidEnterBackground() {
     Director::getInstance()->stopAnimation();
+    SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+    SimpleAudioEngine::getInstance()->pauseAllEffects();
 }
 
 // this function will be called when the app is active again
 void AppDelegate::applicationWillEnterForeground() {
     Director::getInstance()->startAnimation();
+    SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+    SimpleAudioEngine::getInstance()->resumeAllEffects();
 }

@@ -4,7 +4,6 @@
 #include "cocos2d.h"
 
 using namespace cocos2d;
-using namespace std;
 
 class GameOver : public cocos2d::Scene
 {

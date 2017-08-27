@@ -66,6 +66,7 @@
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
 		C94824511F50BBFD00EE8E94 /* GameOver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C948244F1F50BBFD00EE8E94 /* GameOver.cpp */; };
 		C99348E61F530BD7006638D2 /* audio in Resources */ = {isa = PBXBuildFile; fileRef = C99348E51F530BD7006638D2 /* audio */; };
+		C99348EE1F5314B2006638D2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C99348ED1F5314B2006638D2 /* Images.xcassets */; };
 		C9C40DB81F48DB7500393388 /* Instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9C40DB61F48DB7500393388 /* Instructions.cpp */; };
 		C9C40DC01F48ECBE00393388 /* green_edit.png in Resources */ = {isa = PBXBuildFile; fileRef = C9C40DBF1F48ECBE00393388 /* green_edit.png */; };
 		C9F208171F4E2F4D0093C9FD /* sliderTrack.png in Resources */ = {isa = PBXBuildFile; fileRef = C9F208161F4E2F4D0093C9FD /* sliderTrack.png */; };
@@ -175,6 +176,7 @@
 		C948244F1F50BBFD00EE8E94 /* GameOver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOver.cpp; sourceTree = "<group>"; };
 		C94824501F50BBFD00EE8E94 /* GameOver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOver.h; sourceTree = "<group>"; };
 		C99348E51F530BD7006638D2 /* audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = audio; sourceTree = "<group>"; };
+		C99348ED1F5314B2006638D2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C9C40DB61F48DB7500393388 /* Instructions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Instructions.cpp; sourceTree = "<group>"; };
 		C9C40DB71F48DB7500393388 /* Instructions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Instructions.h; sourceTree = "<group>"; };
 		C9C40DBF1F48ECBE00393388 /* green_edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_edit.png; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C99348ED1F5314B2006638D2 /* Images.xcassets */,
 				C99348E51F530BD7006638D2 /* audio */,
 				46880B7619C43A67006E1F66 /* CloseNormal.png */,
 				46880B7719C43A67006E1F66 /* CloseSelected.png */,
@@ -503,6 +506,7 @@
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				46880B8119C43A67006E1F66 /* HelloWorld.png in Resources */,
 				46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */,
+				C99348EE1F5314B2006638D2 /* Images.xcassets in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
@@ -584,6 +588,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				DEVELOPMENT_TEAM = CJF4Y22B6L;
@@ -618,6 +624,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				DEVELOPMENT_TEAM = CJF4Y22B6L;

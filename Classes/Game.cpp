@@ -1,7 +1,5 @@
 #include "Game.h"
 #include "GameOver.h"
-#include "ui/CocosGUI.h"
-
 
 using namespace std;
 using namespace ui;
@@ -21,22 +19,23 @@ bool Game::init()
     }
     
     answer = RandomHelper::random_int(1, 10);;
-    log("%i", answer);
 
     auto guessText = Label::createWithTTF("What number am I thinking of?", "fonts/bitbox.ttf", 16);
+    // TODO - Change this from example and look into better positioning (relative to text?)
+    std::string pNormalSprite = "sliderTrack.png";
+    EditBox *_editName = EditBox::create(Size(100, 20), Scale9Sprite::create(pNormalSprite));
+    auto submitGuessButton = MenuItemImage::create(s_SendScore, s_SendScore, CC_CALLBACK_1(Game::makeGuess, this) );
+    auto menu = Menu::create(submitGuessButton, nullptr);
+    auto wrongGuessText = Label::createWithTTF("Nope, I\'m not thinking of that number. Try again!", "fonts/bitbox.ttf", 16);
+    auto notAllowedGuessText = Label::createWithTTF("Please enter a number between 1 and 10.", "fonts/bitbox.ttf", 16);
     
     guessText->setWidth(visibleSize.width - (padding * 2));
     guessText->setPosition(Vec2(origin.x + visibleSize.width / 2,
                             origin.y + visibleSize.height - guessText->getContentSize().height));
     guessText->setAlignment(TextHAlignment::CENTER);
     
-    this->addChild(guessText);
-    
-    // TODO - Change this from example and look into better positioning (relative to text?)
-    std::string pNormalSprite = "sliderTrack.png";
-    EditBox *_editName = EditBox::create(Size(100, 20), Scale9Sprite::create(pNormalSprite));
     _editName->setPosition(Vec2(origin.x + visibleSize.width / 2,
-                                  origin.y + visibleSize.height - (guessText->getContentSize().height * 2)));
+                                origin.y + visibleSize.height - (guessText->getContentSize().height * 2)));
     _editName->setFontName("Paint Boy");
     _editName->setFontSize(18);
     _editName->setFontColor(Color3B::RED);
@@ -47,18 +46,7 @@ bool Game::init()
     // TODO look into why this is done as a delegate
     _editName->setDelegate(this);
     
-    this->addChild(_editName);
-    
-    auto submitGuessButton = MenuItemImage::create(s_SendScore, s_SendScore, CC_CALLBACK_1(Game::makeGuess, this) );
-    //submitGuessButton->setAnchorPoint(Point(0, 0));
-    
-    auto menu = Menu::create(submitGuessButton, nullptr);
     menu->setNormalizedPosition(Vec2(0.5f, -0.5f));
-    //menu->setPosition(Vec2(2.5, 2.5));
-    
-    _editName->addChild(menu);
-    
-    auto wrongGuessText = Label::createWithTTF("Nope, I\'m not thinking of that number. Try again!", "fonts/bitbox.ttf", 16);
     
     wrongGuessText->setWidth(visibleSize.width - (padding * 2));
     wrongGuessText->setPosition(Vec2(origin.x + visibleSize.width / 2,
@@ -66,18 +54,18 @@ bool Game::init()
     wrongGuessText->setAlignment(TextHAlignment::CENTER);
     wrongGuessText->setOpacity(0);
     
-    this->addChild(wrongGuessText, 1, "wrongGuessText");
-
-    auto notAllowedGuessText = Label::createWithTTF("Please enter a number between 1 and 10.", "fonts/bitbox.ttf", 16);
-    
     notAllowedGuessText->setWidth(visibleSize.width - (padding * 2));
     notAllowedGuessText->setPosition(Vec2(origin.x + visibleSize.width / 2,
-                                     origin.y + notAllowedGuessText->getContentSize().height + padding));
+                                          origin.y + notAllowedGuessText->getContentSize().height + padding));
     notAllowedGuessText->setAlignment(TextHAlignment::CENTER);
     notAllowedGuessText->setOpacity(0);
     
+    this->addChild(guessText);
+    this->addChild(_editName);
+    this->addChild(wrongGuessText, 1, "wrongGuessText");
     this->addChild(notAllowedGuessText, 1, "notAllowedGuessText");
-
+    
+    _editName->addChild(menu);
     
     /* *** TODO ***
      * Y Button to submit guess
@@ -157,7 +145,6 @@ void Game::editBoxEditingDidBegin(EditBox* editBox)
 void Game::editBoxTextChanged(EditBox* editBox, const std::string& text)
 {
     guess = atoi(text.c_str());
-    log("guess: %i", guess);
 };
 
 /**
