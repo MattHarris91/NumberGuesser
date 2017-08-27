@@ -3,10 +3,11 @@
 
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
-
+#include "audio/include/SimpleAudioEngine.h"
 
 using namespace cocos2d;
 using namespace ui;
+using namespace CocosDenshion;
 
 static const char s_SendScore[] = "SendScoreButton.png";
 
@@ -21,6 +22,7 @@ public:
     // If this is going to be used in every scene, is there somewhere else it can be defined just once?
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
+    SimpleAudioEngine* audio = SimpleAudioEngine::getInstance();
     const int padding = 20;
     int answer = 0;
     int numberOfGuesses = 0;

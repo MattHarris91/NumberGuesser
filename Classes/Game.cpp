@@ -18,10 +18,10 @@ bool Game::init()
         return false;
     }
     
-    answer = RandomHelper::random_int(1, 10);;
-
+    answer = RandomHelper::random_int(1, 10);
+    auto guessesLeft = Label::createWithTTF("Guesses Left: 3", "fonts/bitbox.ttf", 12);
     auto guessText = Label::createWithTTF("What number am I thinking of?", "fonts/bitbox.ttf", 16);
-    // TODO - Change this from example and look into better positioning (relative to text?)
+    // TODO - Change this from example and look into better positioning (relative to text?), also use nicer audio for winning / losing and maybe background music?
     std::string pNormalSprite = "sliderTrack.png";
     EditBox *_editName = EditBox::create(Size(100, 20), Scale9Sprite::create(pNormalSprite));
     auto submitGuessButton = MenuItemImage::create(s_SendScore, s_SendScore, CC_CALLBACK_1(Game::makeGuess, this) );
@@ -29,19 +29,23 @@ bool Game::init()
     auto wrongGuessText = Label::createWithTTF("Nope, I\'m not thinking of that number. Try again!", "fonts/bitbox.ttf", 16);
     auto notAllowedGuessText = Label::createWithTTF("Please enter a number between 1 and 10.", "fonts/bitbox.ttf", 16);
     
+    guessesLeft->setPosition(Vec2(origin.x + visibleSize.width - (guessesLeft->getContentSize().width / 2) - padding,
+                                  origin.y + visibleSize.height - (guessesLeft->getContentSize().height / 2) - padding));
+    
     guessText->setWidth(visibleSize.width - (padding * 2));
     guessText->setPosition(Vec2(origin.x + visibleSize.width / 2,
-                            origin.y + visibleSize.height - guessText->getContentSize().height));
+                            origin.y + visibleSize.height - guessesLeft->getContentSize().height - guessText->getContentSize().height - padding));
     guessText->setAlignment(TextHAlignment::CENTER);
     
     _editName->setPosition(Vec2(origin.x + visibleSize.width / 2,
-                                origin.y + visibleSize.height - (guessText->getContentSize().height * 2)));
+                                origin.y + visibleSize.height - guessesLeft->getContentSize().height - guessText->getContentSize().height - (padding * 3)));
     _editName->setFontName("Paint Boy");
     _editName->setFontSize(18);
     _editName->setFontColor(Color3B::RED);
     _editName->setMaxLength(2);
     _editName->setInputMode(EditBox::InputMode::NUMERIC);
     _editName->setReturnType(EditBox::KeyboardReturnType::DONE);
+    // Once text is in, this is no longer center...why?
     _editName->setTextHorizontalAlignment(TextHAlignment::CENTER);
     // TODO look into why this is done as a delegate
     _editName->setDelegate(this);
@@ -61,29 +65,18 @@ bool Game::init()
     notAllowedGuessText->setOpacity(0);
     
     this->addChild(guessText);
+    this->addChild(guessesLeft, 1, "guessesLeft");
     this->addChild(_editName);
     this->addChild(wrongGuessText, 1, "wrongGuessText");
     this->addChild(notAllowedGuessText, 1, "notAllowedGuessText");
     
     _editName->addChild(menu);
     
-    /* *** TODO ***
-     * Y Button to submit guess
-     * Y Keep track of number of guesses
-     * Y Handle wrong guess
-     * Y Handle win
-     * Y Handle lose
-     * N Number of guesses left displayed to player
-     */
-    
     return true;
 }
 
 void Game::makeGuess(Ref* sender)
 {
-    log("answer: %i", answer);
-    log("number of guesses: %i", numberOfGuesses);
-    
     if (guess < 1 || guess > 10)
     {
         Game::notAllowedGuess();
@@ -103,13 +96,18 @@ void Game::makeGuess(Ref* sender)
             Game::wrongGuess();
         }
     }
-    
 }
 
 void Game::wrongGuess()
 {
     FadeIn* fadeIn = FadeIn::create(0.5f);
     auto wrongGuessText = this->getChildByName("wrongGuessText");
+    // TODO How has this worked? Is there a better way?
+    auto guessesLeft = dynamic_cast<Label*>(Director::getInstance()->getRunningScene()->getChildByName("guessesLeft"));
+    string guessesLeftFull = StringUtils::format("Guesses Left: %i", 3 - numberOfGuesses);
+    
+    audio->playEffect("audio/wrong.mp3");
+    guessesLeft->setString(guessesLeftFull);
     wrongGuessText->runAction(fadeIn);
 }
 
@@ -117,6 +115,8 @@ void Game::notAllowedGuess()
 {
     FadeIn* fadeIn = FadeIn::create(0.5f);
     auto notAllowedGuess = this->getChildByName("notAllowedGuessText");
+    
+    audio->playEffect("audio/button.mp3");
     notAllowedGuess->runAction(fadeIn);
 }
 
