@@ -21,7 +21,7 @@ bool GameOver::init()
     
     string gameOverText = didWin ? "You win!" : "You lose.";
 
-    auto message = Label::createWithTTF(gameOverText, "fonts/Marker Felt.ttf", 16);
+    auto message = Label::createWithTTF(gameOverText, "fonts/bitbox.ttf", 16);
     message->setWidth(visibleSize.width - (padding * 2));
     message->setPosition(Vec2(origin.x + visibleSize.width / 2,
                             origin.y + visibleSize.height - message->getContentSize().height));
@@ -29,7 +29,7 @@ bool GameOver::init()
     
     this->addChild(message);
     
-    auto tryAgain = MenuItemLabel::create(Label::createWithTTF("Play Again?", "fonts/Marker Felt.ttf", 16), CC_CALLBACK_1(GameOver::restartGame, this));
+    auto tryAgain = MenuItemLabel::create(Label::createWithTTF("Play Again?", "fonts/bitbox.ttf", 16), CC_CALLBACK_1(GameOver::restartGame, this));
     auto menu = Menu::create(tryAgain, nullptr);
     menu->setPosition(Vec2(origin.x + visibleSize.width / 2,
                                origin.y + visibleSize.height - message->getContentSize().height - (padding * 2)));

@@ -5,6 +5,18 @@
 
 using namespace cocos2d;
 
+class Title : public cocos2d::Scene
+{
+public:
+    static cocos2d::Scene* createScene();
+    virtual bool init();
+    CREATE_FUNC(Title);
+    
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    Vec2 origin = Director::getInstance()->getVisibleOrigin();
+    const int padding = 20;
+};
+
 class Instructions : public cocos2d::Scene
 {
 public:

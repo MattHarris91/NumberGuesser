@@ -23,7 +23,7 @@ bool Game::init()
     answer = RandomHelper::random_int(1, 10);;
     log("%i", answer);
 
-    auto guessText = Label::createWithTTF("What number am I thinking of?", "fonts/Marker Felt.ttf", 16);
+    auto guessText = Label::createWithTTF("What number am I thinking of?", "fonts/bitbox.ttf", 16);
     
     guessText->setWidth(visibleSize.width - (padding * 2));
     guessText->setPosition(Vec2(origin.x + visibleSize.width / 2,
@@ -58,7 +58,7 @@ bool Game::init()
     
     _editName->addChild(menu);
     
-    auto wrongGuessText = Label::createWithTTF("Nope, I\'m not thinking of that number. Try again!", "fonts/Marker Felt.ttf", 16);
+    auto wrongGuessText = Label::createWithTTF("Nope, I\'m not thinking of that number. Try again!", "fonts/bitbox.ttf", 16);
     
     wrongGuessText->setWidth(visibleSize.width - (padding * 2));
     wrongGuessText->setPosition(Vec2(origin.x + visibleSize.width / 2,
@@ -68,7 +68,7 @@ bool Game::init()
     
     this->addChild(wrongGuessText, 1, "wrongGuessText");
 
-    auto notAllowedGuessText = Label::createWithTTF("Please enter a number between 1 and 10.", "fonts/Marker Felt.ttf", 16);
+    auto notAllowedGuessText = Label::createWithTTF("Please enter a number between 1 and 10.", "fonts/bitbox.ttf", 16);
     
     notAllowedGuessText->setWidth(visibleSize.width - (padding * 2));
     notAllowedGuessText->setPosition(Vec2(origin.x + visibleSize.width / 2,

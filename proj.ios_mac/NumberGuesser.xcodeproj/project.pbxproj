@@ -65,6 +65,7 @@
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
 		C94824511F50BBFD00EE8E94 /* GameOver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C948244F1F50BBFD00EE8E94 /* GameOver.cpp */; };
+		C99348E61F530BD7006638D2 /* audio in Resources */ = {isa = PBXBuildFile; fileRef = C99348E51F530BD7006638D2 /* audio */; };
 		C9C40DB81F48DB7500393388 /* Instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C9C40DB61F48DB7500393388 /* Instructions.cpp */; };
 		C9C40DC01F48ECBE00393388 /* green_edit.png in Resources */ = {isa = PBXBuildFile; fileRef = C9C40DBF1F48ECBE00393388 /* green_edit.png */; };
 		C9F208171F4E2F4D0093C9FD /* sliderTrack.png in Resources */ = {isa = PBXBuildFile; fileRef = C9F208161F4E2F4D0093C9FD /* sliderTrack.png */; };
@@ -173,6 +174,7 @@
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C948244F1F50BBFD00EE8E94 /* GameOver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOver.cpp; sourceTree = "<group>"; };
 		C94824501F50BBFD00EE8E94 /* GameOver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOver.h; sourceTree = "<group>"; };
+		C99348E51F530BD7006638D2 /* audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = audio; sourceTree = "<group>"; };
 		C9C40DB61F48DB7500393388 /* Instructions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Instructions.cpp; sourceTree = "<group>"; };
 		C9C40DB71F48DB7500393388 /* Instructions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Instructions.h; sourceTree = "<group>"; };
 		C9C40DBF1F48ECBE00393388 /* green_edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_edit.png; sourceTree = "<group>"; };
@@ -308,14 +310,15 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C9F2081C1F4E37060093C9FD /* SendScoreButton.png */,
-				C9F208161F4E2F4D0093C9FD /* sliderTrack.png */,
-				C9C40DBF1F48ECBE00393388 /* green_edit.png */,
-				521A8EA819F11F5000D177D7 /* fonts */,
-				3EACC98E19EE6D4300EB3C5E /* res */,
+				C99348E51F530BD7006638D2 /* audio */,
 				46880B7619C43A67006E1F66 /* CloseNormal.png */,
 				46880B7719C43A67006E1F66 /* CloseSelected.png */,
+				521A8EA819F11F5000D177D7 /* fonts */,
+				C9C40DBF1F48ECBE00393388 /* green_edit.png */,
 				46880B7A19C43A67006E1F66 /* HelloWorld.png */,
+				3EACC98E19EE6D4300EB3C5E /* res */,
+				C9F2081C1F4E37060093C9FD /* SendScoreButton.png */,
+				C9F208161F4E2F4D0093C9FD /* sliderTrack.png */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -494,6 +497,7 @@
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				C9F2081D1F4E37060093C9FD /* SendScoreButton.png in Resources */,
+				C99348E61F530BD7006638D2 /* audio in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
